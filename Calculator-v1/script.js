@@ -21,6 +21,7 @@ const buttons = document.querySelectorAll('button[data-label]');
 const operators = document.querySelectorAll('button[operator-label]');
 const allClear = document.querySelector('.allClear');
 const currentInput = document.querySelector(".currentInput");
+const equals = document.querySelector('#equals');
 
 
 // let valueCurrentInput = parseInt(currentInputText);
@@ -39,7 +40,11 @@ buttons.forEach(button => {
             currentInput.innerText = buttonString;
             num1 = currentInput.innerText;
         }else if(num1 !== null && operator !== null){
-            num2 = num2 + buttonString;
+            if(num2 === null){
+                num2 = buttonString;
+            }else{
+                num2 = num2 + buttonString;
+            }
             currentInput.innerText = num1 + operator + num2;
         // }else if(buttonString === "."){
         //     currentInput.innerText = "0.";
@@ -53,20 +58,22 @@ buttons.forEach(button => {
 operators.forEach(button => {
     button.addEventListener('click', function() {
         console.log(this.getAttribute('operator-label'));
-        let operator = this.getAttribute('operator-label');
-        let currentInputText = currentInput.innerText;
-        console.log(currentInputText);
-        console.log(operator);
-        if(currentInputText === "Current Input"){
-            num1 = 0;
-            currentInput.innerText = "0" + operator;
-        }else{
-            num1 = currentInput.innerText;
-            currentInput.innerText = num1 + operator;
-        }        console.log(currentInputText);
+        if(operator === null){
+            operator = this.getAttribute('operator-label');
+            let currentInputText = currentInput.innerText;  
+            if(currentInputText === "Current Input"){
+                num1 = 0;
+                currentInput.innerText = "0" + operator;
+            }else{
+                num1 = currentInput.innerText;
+                currentInput.innerText = num1 + operator;
+            }
+        }
     });
 });
-console.log(num1);
+
+
+
 
 allClear.addEventListener('click', function() {
     currentInput.innerText = 'Current Input';
