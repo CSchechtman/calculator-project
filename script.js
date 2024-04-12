@@ -11,9 +11,12 @@
 
 let num1 = null
 let num2 = null
+let operator = null
+let total = null
 // Select all buttons with a number class
 const buttons = document.querySelectorAll('button[data-label]');
 const operators = document.querySelectorAll('button.operator');
+const allClear = document.querySelectorAll('button.allClear');
 // Grab innertext(string) of Current Input, sets valueCurrentInput to the innertext
 let currentInput = document.querySelector(".currentInput");
 
@@ -48,5 +51,27 @@ operators.forEach(button => {
     button.addEventListener('click', function() {
         console.log(this.getAttribute('data-label'));
         let operator = this.getAttribute('data-label');
-    })
-})
+        let currentInputText = currentInput.innerText;
+        console.log(currentInputText);
+        if(currentInputText === "Current Input"){
+            let num1 = 0;
+            currentInputText = toString(num1) + operator;
+        }else{
+            const inputTextArray = currentInputText.split(operator);
+            num2 = inputTextArray[1];
+        }
+        currentInputText = num1 + operator + num2;
+
+    });
+});
+
+allClear.forEach(button => {
+    button.addEventListener('click', function() {
+        currentInput.innerText = 'Current Input';
+    });
+});
+
+// const operatorSplit = (string, operator) => {
+//     for(let i = 0; i < )
+
+// };
