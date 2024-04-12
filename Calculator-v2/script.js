@@ -12,13 +12,15 @@
 let num1 = null
 let num2 = null
 let operator = null
-let total = null
-// Select all buttons with a number class
+let subtotal = null
+// Select all buttons with a data-label
+// Select all buttons with an operator class
+// select the AC button
+// Select Current Input box
 const buttons = document.querySelectorAll('button[data-label]');
 const operators = document.querySelectorAll('button.operator');
-const allClear = document.querySelectorAll('button.allClear');
-// Grab innertext(string) of Current Input, sets valueCurrentInput to the innertext
-let currentInput = document.querySelector(".currentInput");
+const allClear = document.querySelector('.allClear');
+const currentInput = document.querySelector(".currentInput");
 
 
 // let valueCurrentInput = parseInt(currentInputText);
@@ -26,7 +28,7 @@ let currentInput = document.querySelector(".currentInput");
 // console.log(valueCurrentInput)
 // console.log(currentInput)
 
-// Add a click event listener to each number button
+// Add a click event listener to every button
 buttons.forEach(button => {
     button.addEventListener('click', function() {
         let buttonString = this.getAttribute('data-label');
@@ -35,6 +37,7 @@ buttons.forEach(button => {
 // and set the input to that value
         if(currentInputText === "Current Input"){
             currentInput.innerText = buttonString;
+            console.log(currentInput);
             console.log(currentInputText);
             console.log(currentInput.innerText);
             num1 = parseInt(currentInput.innerText);
@@ -60,16 +63,30 @@ operators.forEach(button => {
             const inputTextArray = currentInputText.split(operator);
             num2 = inputTextArray[1];
         }
-        currentInputText = num1 + operator + num2;
+        
 
-    });
+    });currentInputText = num1 + operator + num2;
 });
 
-allClear.forEach(button => {
-    button.addEventListener('click', function() {
-        currentInput.innerText = 'Current Input';
-    });
+allClear.addEventListener('click', function() {
+    currentInput.innerText = 'Current Input';
 });
+
+const add = (num1, num2) => {
+    return num1 + num2;
+};
+
+const subtract = (num1, num2) => {
+    return num1 - num2;
+};
+
+const multiply = (num1, num2) => { 
+    return num1 * num2;
+};
+
+const divide = (num1, num2) => {
+    return num1 / num2;
+};
 
 // const operatorSplit = (string, operator) => {
 //     for(let i = 0; i < )
