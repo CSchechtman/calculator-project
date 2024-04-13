@@ -1,16 +1,19 @@
-body {}
-
-.container {}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
 
 .currentInput {
     display: flex;
+    flex-wrap: wrap;
     width: 400px;
     height: 200px;
     background-color: #409cbd;
     border-radius: 40px;
     font-size: 3em;
     justify-content: right;
-    padding-top: 20px;
+    align-content: space-around;
 }
 
 .buttonBox {
