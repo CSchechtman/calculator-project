@@ -3,10 +3,14 @@ body {}
 .container {}
 
 .currentInput {
+    display: flex;
     width: 400px;
     height: 200px;
     background-color: #409cbd;
     border-radius: 40px;
+    font-size: 3em;
+    justify-content: right;
+    padding-top: 20px;
 }
 
 .buttonBox {
@@ -69,39 +73,50 @@ button {
     grid-area: 1/2;
     font-size: 2.5em;
 }
+
 [data-label="1"] {
     grid-area: 4/1;
 }
+
 [data-label="2"] {
     grid-area: 4/2;
 }
+
 [data-label="3"] {
     grid-area: 4/3;
 }
+
 [data-label="4"] {
     grid-area: 3/1;
 }
+
 [data-label="5"] {
     grid-area: 3/2;
 }
+
 [data-label="6"] {
     grid-area: 3/3;
 }
+
 [data-label="7"] {
     grid-area: 2/1;
 }
+
 [data-label="8"] {
     grid-area: 2/2;
 }
+
 [data-label="9"] {
     grid-area: 2/3;
 }
+
 [data-label="0"] {
     grid-area: 5/1;
     width: 200px;
     height: 100px;
     border-radius: 40px;
 }
+
 [data-label="."] {
     grid-area: 5/3;
 }
