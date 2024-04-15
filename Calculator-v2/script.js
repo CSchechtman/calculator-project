@@ -147,5 +147,5 @@ const percentage = (num1, num2) => {
 // Tip calculator
 // Dark theme -- button in options, class for dark theme with toggle button, transition to dark theme, remove dark class transition back
 // Hover button css animation
-// options animation
+// options animation - mouse enter from eric
 // box shadow on the calc and buttons
