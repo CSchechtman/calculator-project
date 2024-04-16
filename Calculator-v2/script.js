@@ -21,29 +21,46 @@ const concatEntry = (entry) => {
 
 const display = () => {
     currentInput.innerText = num1;
-    subtotalDiv.innerText = num2 + ' ' + (operator || num1);
+    console.log(currentInput.innerText)
+    subtotalDiv.innerText = num2 + ' ' + (operator || '') + num1;
 };
 
-// Add a click event listener for 0-9 and .
+// Add a click event listener for 0-9 and . and process them on the display
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         concatEntry(button.innerText);
         display();
-        console.log("num1: " + num1, "num2 " + num2);
-        //     if (num1 !== null && operator !== null) {
-        //         if (num2 === null) {
-        //             num2 = buttonString;
-        //         } else {
-        //             num2 = num2 + buttonString;
-        //         }
-        //         currentInput.innerText = num1 + operator + num2;
-        //     } else {
-        //         concatEntry(this.innerText);
-        //         console.log("num1: " + num1)
-        //     }
-
     });
 });
+
+const doMath = () => {
+    const first = parseFloat(num1);
+    const second = parseFloat(num2);
+    switch (operator) {
+        case "+":
+            subtotal = add(first, second);
+            break;
+        case "-":
+            subtotal = subtract(first, second);
+            break;
+        case "/":
+            subtotal = divide(first, second);
+            break;
+        case "X":
+            subtotal = multiply(first, second);
+            break;
+        case "%":
+            subtotal = percentage(first, second);
+            break;
+        default:
+            return;
+    }
+
+    operator = null;
+    num1 = subtotal;
+    num2 = '';
+    console.log("subtotal after math: " + subtotal)
+}
 
 const clickOperator = (clickedOperator) => {
     operator = clickedOperator;
@@ -64,40 +81,41 @@ operators.forEach(button => {
     });
 });
 
-equals.addEventListener('click', function () {
-    if (subtotal === null) {
-        if (num1 !== null && operator !== null && num2 !== null) {
-            num1 = parseFloat(num1);
-            num2 = parseFloat(num2);
-            switch (operator) {
-                case "+":
-                    subtotal = add(num1, num2);
-                    break;
-                case "-":
-                    subtotal = subtract(num1, num2);
-                    break;
-                case "/":
-                    if (num2 = 0) {
-                        currentInput.innerText = err;
-                        currentInput.style.color = "red";
-                        break;
-                    } else {
-                        subtotal = divide(num1, num2);
-                        break;
-                    }
-                case "X":
-                    subtotal = multiply(num1, num2);
-                    break;
-                case "%":
-                    subtotal = percentage(num1, num2);
-                    break;
-            }
-            console.log("subtotal ", subtotal);
-            currentInput.innerText = subtotal;
-            currentInput.style.background = "#a65600";
-        };
-    };
-});
+equals.addEventListener('click', doMath);
+// {
+//     if (subtotal === null) {
+//         if (num1 !== null && operator !== null && num2 !== null) {
+//             num1 = parseFloat(num1);
+//             num2 = parseFloat(num2);
+            // switch (operator) {
+            //     case "+":
+            //         subtotal = add(num1, num2);
+            //         break;
+            //     case "-":
+            //         subtotal = subtract(num1, num2);
+            //         break;
+            //     case "/":
+            //         if (num2 = 0) {
+            //             currentInput.innerText = err;
+            //             currentInput.style.color = "red";
+            //             break;
+            //         } else {
+            //             subtotal = divide(num1, num2);
+            //             break;
+            //         }
+            //     case "X":
+            //         subtotal = multiply(num1, num2);
+            //         break;
+            //     case "%":
+            //         subtotal = percentage(num1, num2);
+            //         break;
+            // }
+//             console.log("subtotal ", subtotal);
+//             currentInput.innerText = subtotal;
+//             currentInput.style.background = "#a65600";
+//         };
+//     };
+// });
 
 allClear.addEventListener('click', function () {
     currentInput.innerText = 'Current Input';
@@ -136,38 +154,6 @@ const percentage = (first, second) => {
 };
 
 
-
-
-
-const doMath = () => {
-    const first = parseFloat(num1);
-    const second = parseFloat(num2);
-    switch (operator) {
-        case "+":
-            subtotal = add(first, second);
-            break;
-        case "-":
-            subtotal = subtract(first, second);
-            break;
-        case "/":
-            subtotal = divide(first, second);
-            break;
-        case "X":
-            subtotal = multiply(first, second);
-            break;
-        case "%":
-            subtotal = percentage(first, second);
-            break;
-        default:
-            return;
-    }
-
-    operator = null;
-    num2 = subtotal;
-    num1 = '';
-    display();
-    console.log("subtotal after math: " + subtotal)
-}
 
 // Things to add:
 // Error for divide by zero
