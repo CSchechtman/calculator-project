@@ -82,10 +82,12 @@ operators.forEach(button => {
 equals.addEventListener('click', () => {
     doMath();
     display();
+    currentInput.style.backgroundColor = "#a65600";
 });
 
 allClear.addEventListener('click', function () {
     currentInput.innerText = 'Current Input';
+    currentInput.style.backgroundColor = "#409cbd";
     num1 = "";
     num2 = "";
     operator = null;
