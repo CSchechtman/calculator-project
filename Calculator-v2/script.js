@@ -21,7 +21,7 @@ const concatEntry = (entry) => {
 
 const display = () => {
     currentInput.innerText = num1;
-    subtotalDiv.innerText = num2 + ' ' + (operator || '') + num1;
+    subtotalDiv.innerText = num2 + ' ' + (operator || '') + ' ' + num1;
 };
 
 // Add a click event listener for 0-9 and . and process them on the display
@@ -63,7 +63,7 @@ const doMath = () => {
 
 const clickOperator = (clickedOperator) => {
     if (num1 === ''){
-        return;
+        num1 = 0;
     }
     if (num2 !== ''){
         doMath();
@@ -84,40 +84,6 @@ equals.addEventListener('click', () => {
     doMath();
     display();
 });
-// {
-//     if (subtotal === null) {
-//         if (num1 !== null && operator !== null && num2 !== null) {
-//             num1 = parseFloat(num1);
-//             num2 = parseFloat(num2);
-            // switch (operator) {
-            //     case "+":
-            //         subtotal = add(num1, num2);
-            //         break;
-            //     case "-":
-            //         subtotal = subtract(num1, num2);
-            //         break;
-            //     case "/":
-            //         if (num2 = 0) {
-            //             currentInput.innerText = err;
-            //             currentInput.style.color = "red";
-            //             break;
-            //         } else {
-            //             subtotal = divide(num1, num2);
-            //             break;
-            //         }
-            //     case "X":
-            //         subtotal = multiply(num1, num2);
-            //         break;
-            //     case "%":
-            //         subtotal = percentage(num1, num2);
-            //         break;
-            // }
-//             console.log("subtotal ", subtotal);
-//             currentInput.innerText = subtotal;
-//             currentInput.style.background = "#a65600";
-//         };
-//     };
-// });
 
 allClear.addEventListener('click', function () {
     currentInput.innerText = 'Current Input';
@@ -125,8 +91,6 @@ allClear.addEventListener('click', function () {
     num2 = "";
     operator = null;
     subtotal = null;
-    currentInput.style.color = "black";
-    currentInput.style.background = "#409cbd";
     subtotalDiv.innerText = "Subtotal";
 });
 
