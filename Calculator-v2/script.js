@@ -58,7 +58,6 @@ const doMath = () => {
     operator = null;
     num1 = subtotal;
     num2 = '';
-    console.log("subtotal after math: " + subtotal)
 }
 
 const clickOperator = (clickedOperator) => {
@@ -122,12 +121,10 @@ const percentage = (first, second) => {
 
 
 // Things to add:
-// Error for divide by zero
 // Sq rt math.sqrt(innertext)
 // Power Math.pow (last, next)
 
-// Memory? Subtotal?
+// Memory?
 // Tip calculator
 // Dark theme -- button in options, class for dark theme with toggle button, transition to dark theme, remove dark class transition back
-// Hover button css animation
 // options animation - mouse enter from eric
