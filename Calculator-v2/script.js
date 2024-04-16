@@ -21,7 +21,6 @@ const concatEntry = (entry) => {
 
 const display = () => {
     currentInput.innerText = num1;
-    console.log(currentInput.innerText)
     subtotalDiv.innerText = num2 + ' ' + (operator || '') + num1;
 };
 
@@ -34,8 +33,8 @@ buttons.forEach(button => {
 });
 
 const doMath = () => {
-    const first = parseFloat(num1);
-    const second = parseFloat(num2);
+    const first = parseFloat(num2);
+    const second = parseFloat(num1);
     switch (operator) {
         case "+":
             subtotal = add(first, second);
@@ -63,13 +62,13 @@ const doMath = () => {
 }
 
 const clickOperator = (clickedOperator) => {
-    operator = clickedOperator;
     if (num1 === ''){
-        num1 = 0;
+        return;
     }
     if (num2 !== ''){
         doMath();
     }
+    operator = clickedOperator;
     num2 = num1;
     num1 = '';
 }
@@ -81,7 +80,10 @@ operators.forEach(button => {
     });
 });
 
-equals.addEventListener('click', doMath);
+equals.addEventListener('click', () => {
+    doMath();
+    display();
+});
 // {
 //     if (subtotal === null) {
 //         if (num1 !== null && operator !== null && num2 !== null) {
