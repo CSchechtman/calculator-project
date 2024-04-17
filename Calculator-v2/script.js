@@ -120,7 +120,12 @@ const percentage = (first, second) => {
     return (first / 100) * second;
 };
 
-
+// Detect current system theme or change theme when toggle button clicked
+document.getElementById('theme-toggle').addEventListener('click', function() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+});
 
 // Things to add:
 // Sq rt math.sqrt(innertext)
