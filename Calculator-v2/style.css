@@ -1,17 +1,31 @@
-/* Default light theme */:root {
-    --background-color: #fff;
-    --text-color: #333;
+/* Default light theme */
+:root {
+    /* --background-color: #fff; */
+    --text-color: #black;
+    --button-background-color: #a65600;
+    --currentInput-background-color: #409cbd;
+    --number-background-color: #6daac0;
+    --container-background-color: #999;
+    --subtotal-background-color: #D9D9D9;
+    --options-background-color: #7D6954;
 }
 
-/* Dark theme */[data-theme="dark"] {
-    --background-color: #333;
+/* Dark theme */
+[data-theme="dark"] {
+    --background-color: #121212;
     --text-color: #fff;
+    --button-background-color: #281C0F;
+    --currentInput-background-color: #10191D;
+    --number-background-color: #0F2128;
+    --container-background-color: #121212;
+    --subtotal-background-color: #2F2F2F;
+    --options-background-color: #1B1713;
 }
 
 body {
     background-color: var(--background-color);
     color: var(--text-color);
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
@@ -19,8 +33,9 @@ body {
     flex-wrap: wrap;
     flex-direction: column;
     width: 400px;
-    background: #999;
-    /*box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+    border-radius: 40px 40px 40px 40px;
+    background: var(--container-background-color);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .currentInput {
@@ -28,12 +43,12 @@ body {
     flex-wrap: wrap;
     width: 400px;
     height: 200px;
-    background-color: #409cbd;
-    border-radius: 0 0 40px 40px;
-    font-size: 3em;
+    background-color: var(--currentInput-background-color);
+    border-radius: 40px 40px 0 0;
+    font-size: 4em;
     justify-content: center;
     align-content: space-around;
-    transition: background-color 2s ease;
+    transition: background-color 0.3s, color 0.3s;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
@@ -44,6 +59,7 @@ body {
     grid-template-rows: repeat(5, 100px);
     width: 400px;
     height: 500px;
+    border-radius: 0 0 40px 40px;
 }
 
 button {
@@ -78,27 +94,79 @@ button:before {
 }
 
 .number {
-    background-color: #6daac0;
+    background-color: var(--number-background-color);
+    transition: background-color 0.3s, color 0.3s;
+    color: var(--text-color);
+}
+
+.subtotal {
+    display: flex;
+    justify-content: flex-end;
+    background-color: var(--subtotal-background-color);
+    transition: background-color 0.3s, color 0.3s;
+    color: var(--text-color);
+    font-size: 3em;
+}
+
+.options {
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    background-color: var(--options-background-color);
+    transition: background-color 0.3s, color 0.3s;
+    color: var(--text-color);
+    font-size: 3em;
+    height: 55px;
+    align-items: flex-end;
+}
+
+.options:hover {
+    /* display: flex;
+    flex-direction: column;
+    background-color: var(--options-background-color);
+    transition: background-color 0.3s, color 0.3s; 
+    color: var(--text-color);
+    font-size: 3em; */
+    transition: height .5s;
+    height: 110px;
+    /* align-items: flex-end; */
 }
 
 #Del {
-    background-color: #6daac0;
+    background-color: var(--number-background-color);
+    transition: background-color 0.3s, color 0.3s;
+    color: var(--text-color);
 }
 
 .equals {
     grid-area: 5/4;
-    background-color: #409cbd;
+    background-color: var(--currentInput-background-color);
+    transition: background-color 0.3s, color 0.3s;
+    color: var(--text-color);
     font-size: 3em;
 }
 
 .operator {
-    background-color: #409cbd;
+    background-color: var(--currentInput-background-color);
+    transition: background-color 0.3s, color 0.3s;
+    color: var(--text-color);
 }
 
 .allClear {
     grid-area: 1/1;
-    background-color: #a65600;
+    background-color: var(--button-background-color);
+    transition: background-color 0.3s, color 0.3s;
+    color: var(--text-color);
     font-size: 2.5em;
+}
+
+#theme-toggle {
+    display: flex;
+    justify-content: center;
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    font-size: 1em;
 }
 
 [operator-label="+"] {
@@ -128,46 +196,57 @@ button:before {
 
 [data-label="1"] {
     grid-area: 4/1;
+    font-size: 2.5em;
 }
 
 [data-label="2"] {
     grid-area: 4/2;
+    font-size: 2.5em;
 }
 
 [data-label="3"] {
     grid-area: 4/3;
+    font-size: 2.5em;
 }
 
 [data-label="4"] {
     grid-area: 3/1;
+    font-size: 2.5em;
 }
 
 [data-label="5"] {
     grid-area: 3/2;
+    font-size: 2.5em;
 }
 
 [data-label="6"] {
     grid-area: 3/3;
+    font-size: 2.5em;
 }
 
 [data-label="7"] {
     grid-area: 2/1;
+    font-size: 2.5em;
 }
 
 [data-label="8"] {
     grid-area: 2/2;
+    font-size: 2.5em;
 }
 
 [data-label="9"] {
     grid-area: 2/3;
+    font-size: 2.5em;
 }
 
 [data-label="0"] {
     grid-area: 5/1;
+    font-size: 2.5em;
 }
 
 [data-label="."] {
     grid-area: 5/2;
+    font-size: 2.5em;
 }
 
 [operator-label="%"] {
@@ -177,4 +256,5 @@ button:before {
 
 [data-label="Del"] {
     grid-area: 5/3;
+    font-size: 2.5em;
 }

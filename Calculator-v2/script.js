@@ -13,6 +13,7 @@ const currentInput = document.querySelector(".currentInput"); // Select Current 
 const equals = document.querySelector('.equals'); // Select Equals button for DOM use
 const del = document.getElementById("Del"); // Select the Delete key for DOM use
 const subtotalDiv = document.querySelector('.subtotal'); //Selects the subtotal div for Dom use
+const options = document.querySelector('.options');
 
 const concatEntry = (entry) => {
     if (entry === '.' && num1.includes('.')) return;
@@ -82,12 +83,12 @@ operators.forEach(button => {
 equals.addEventListener('click', () => {
     doMath();
     display();
-    currentInput.style.backgroundColor = "#a65600";
+    currentInput.style.backgroundColor = "var(--button-background-color)";
 });
 
 allClear.addEventListener('click', function () {
     currentInput.innerText = 'Current Input';
-    currentInput.style.backgroundColor = "#409cbd";
+    currentInput.style.backgroundColor = "var(--currentInput-background-color)";
     num1 = "";
     num2 = "";
     operator = null;
@@ -127,11 +128,13 @@ document.getElementById('theme-toggle').addEventListener('click', function() {
     document.documentElement.setAttribute('data-theme', newTheme);
 });
 
+// options.addEventListener('click', () => {
+//     options.style.height === "55px" ? options.style.height = "110px" : options.style.height = "55px";
+// })
+
 // Things to add:
 // Sq rt math.sqrt(innertext)
 // Power Math.pow (last, next)
 
 // Memory?
 // Tip calculator
-// Dark theme -- button in options, class for dark theme with toggle button, transition to dark theme, remove dark class transition back
-// options animation - mouse enter from eric
