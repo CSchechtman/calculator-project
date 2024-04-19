@@ -14,12 +14,14 @@ const equals = document.querySelector('.equals'); // Select Equals button for DO
 const del = document.getElementById("Del"); // Select the Delete key for DOM use
 const subtotalDiv = document.querySelector('.subtotal'); //Selects the subtotal div for Dom use
 const options = document.querySelector('.options');
+const pi = document.getElementById("pi");
 
 const concatEntry = (entry) => {
     if (entry === '.' && num1.includes('.')) return;
     num1 = num1.toString() + entry.toString();
 };
 
+// Reset the screen state
 const display = () => {
     currentInput.innerText = num1;
     subtotalDiv.innerText = num2 + ' ' + (operator || '') + ' ' + num1;
@@ -33,6 +35,7 @@ buttons.forEach(button => {
     });
 });
 
+// All math functions live here
 const doMath = () => {
     const first = parseFloat(num2);
     const second = parseFloat(num1);
@@ -62,10 +65,10 @@ const doMath = () => {
 }
 
 const clickOperator = (clickedOperator) => {
-    if (num1 === ''){
+    if (num1 === '') {
         num1 = 0;
     }
-    if (num2 !== ''){
+    if (num2 !== '') {
         doMath();
     }
     operator = clickedOperator;
@@ -96,6 +99,11 @@ allClear.addEventListener('click', function () {
     subtotalDiv.innerText = "Subtotal";
 });
 
+pi.addEventListener('click', () => {
+    num1 = Math.PI.toFixed(10);
+    display();
+});
+
 del.addEventListener('click', () => {
     num1 = currentInput.innerText.toString().slice(0, -1);
     display();
@@ -122,7 +130,7 @@ const percentage = (first, second) => {
 };
 
 // Detect current system theme or change theme when toggle button clicked
-document.getElementById('theme-toggle').addEventListener('click', function() {
+document.getElementById('theme-toggle').addEventListener('click', function () {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', newTheme);
@@ -138,3 +146,5 @@ document.getElementById('theme-toggle').addEventListener('click', function() {
 
 // Memory?
 // Tip calculator
+// dice roll
+//
