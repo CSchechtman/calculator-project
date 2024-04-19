@@ -16,6 +16,7 @@ const subtotalDiv = document.querySelector('.subtotal'); //Selects the subtotal 
 const options = document.querySelector('.options');
 const pi = document.getElementById("pi");
 
+//Adds a digit to the end of a currently saved variable
 const concatEntry = (entry) => {
     if (entry === '.' && num1.includes('.')) return;
     num1 = num1.toString() + entry.toString();
@@ -64,6 +65,7 @@ const doMath = () => {
     num2 = '';
 }
 
+// Tells the calc what to do when each operator is pressed
 const clickOperator = (clickedOperator) => {
     if (num1 === '') {
         num1 = 0;
@@ -76,6 +78,7 @@ const clickOperator = (clickedOperator) => {
     num1 = '';
 }
 
+// Event listeners
 operators.forEach(button => {
     button.addEventListener('click', () => {
         clickOperator(button.innerText);
@@ -109,6 +112,7 @@ del.addEventListener('click', () => {
     display();
 });
 
+// Math functions
 const add = (first, second) => {
     return first + second;
 };
@@ -136,15 +140,10 @@ document.getElementById('theme-toggle').addEventListener('click', function () {
     document.documentElement.setAttribute('data-theme', newTheme);
 });
 
-// options.addEventListener('click', () => {
-//     options.style.height === "55px" ? options.style.height = "110px" : options.style.height = "55px";
-// })
 
 // Things to add:
 // Sq rt math.sqrt(innertext)
 // Power Math.pow (last, next)
-
-// Memory?
+// parentheticals/ Memory?
 // Tip calculator
 // dice roll
-//
